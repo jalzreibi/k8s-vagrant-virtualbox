@@ -10,7 +10,8 @@ Go into each directory:
 1. run Vagrant up --> this will bring the VM up
 2. run Vagrant ssh --> this will allow you to ssh into the box
 3. run installk8.sh on each node --> this will upgrade the VM and install all the required tools and configuration
-4. restart the nodes and run sudo swapoff -a 
+4. edit the file /etc/default/kubelet and add the line KUBELET_EXTRA_ARGS="${KUBELET_EXTRA_ARGS} --node-ip=[node-ip]" with node-ip corresponding to the ip defined in Vagrantfile
+5. restart the nodes and run sudo swapoff -a 
 
 On the master node:
 1. run sudo kubeadm init --pod-network-cidr=10.10.0.0/16 --apiserver-advertise-address=192.168.50.10 --> this will start the master node
